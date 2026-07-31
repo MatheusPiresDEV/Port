@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matheus Pires | Analista de Dados, BI & Engenheiro de Software</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-content">
+      <button class="hamburger-btn" id="menuToggle" aria-label="Abrir Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="nav" id="navMenu">
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre & Experiência</a>
+        <a href="#formacao">Formação</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <a href="seu-cv.pdf" download class="btn btn-primary btn-sm">
+        <i class="fa-solid fa-download"></i> Baixar CV (PDF)
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-content">
+        <!-- <div class="hero-badge">Portfólio Profissional</div> -->
+        <h1>Matheus Gustavo da Silva Pires</h1>
+
+        <h2 class="hero-subtitle">
+          <span id="typewriter"></span><span class="cursor">&nbsp;</span>
+        </h2>
+
+        <p class="hero-info">
+          <span><i class="fa-solid fa-user"></i> <span id="userAge">--</span> anos</span>
+          <span>•</span>
+          <span><i class="fa-solid fa-location-dot"></i> Colombo - PR</span>
+          <span>•</span>
+          <span><i class="fa-solid fa-language"></i> Inglês Funcional (Técnico)</span>
+        </p>
+
+        <div class="social-links">
+          <a href="https://linkedin.com/in/matheusgustavopires" target="_blank" aria-label="LinkedIn"><i
+              class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/MatheusPiresDEV" target="_blank" aria-label="GitHub"><i
+              class="fa-brands fa-github"></i></a>
+          <!-- <a href="https://matheuspiresdev.github.io/Portfolioo" target="_blank" aria-label="Portfólio"><i
+              class="fa-solid fa-globe"></i></a> -->
+          <a href="mailto:matheusgustavodasilvapires@gmail.com" aria-label="Email"><i
+              class="fa-solid fa-envelope"></i></a>
+          <a href="https://wa.me/5541988314797" target="_blank" aria-label="WhatsApp"><i
+              class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="section">
+      <div class="container">
+        <h2 class="section-title">Projetos em Destaque</h2>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="bi">Dados & BI</button>
+          <button class="filter-btn" data-filter="web">Desenvolvimento Web</button>
+        </div>
+
+        <div class="projects-grid" id="projectsContainer">
+
+          <!-- PROJETO FIXO BI -->
+          <article class="card project-card featured" data-category="bi" data-pinned="true">
+            <div class="pinned-badge"><i class="fa-solid fa-thumbtack"></i> Destaque BI</div>
+
+            <div class="project-header">
+              <h3>Dashboard de Vendas & Performance (Power BI)</h3>
+              <p>Solução completa de BI para análise de margem de lucro e projeção de vendas regionais com atualização
+                automatizada.</p>
+              <div class="badges">
+                <span class="badge">Power BI</span>
+                <span class="badge">DAX</span>
+                <span class="badge">SQL Server</span>
+                <span class="badge">ETL</span>
+              </div>
+            </div>
+
+            <div class="tabs-container">
+              <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="tab-bi-1-1">Visão Geral</button>
+                <button class="tab-btn" data-tab="tab-bi-1-2">Detalhamento</button>
+                <button class="tab-btn" data-tab="tab-bi-1-3">Modelagem</button>
+              </div>
+
+              <div class="tab-content active" id="tab-bi-1-1">
+                <div class="media-frame">
+                  <img src="./Assets/Port 2.png"
+                    alt="Visão Geral BI">
+                </div>
+              </div>
+
+              <div class="tab-content" id="tab-bi-1-2">
+                <div class="carousel-container">
+                  <div class="carousel-track">
+                    <div class="carousel-slide"><img
+                        src="./Assets/Port 2.2.png"
+                        alt="Detalhe 1"></div>
+                    <div class="carousel-slide"><img
+                        src="./Assets/port 2.3 att.png"
+                        alt="Detalhe 2"></div>
+                  </div>
+                  <button class="carousel-nav prev"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button class="carousel-nav next"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="carousel-indicators"></div>
+                </div>
+              </div>
+
+              <div class="tab-content" id="tab-bi-1-3">
+                <div class="media-frame">
+                  <img src="./Assets/Port 3.jpg"
+                    alt="Star Schema">
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO FIXO WEB -->
+          <article class="card project-card featured" data-category="web" data-pinned="true">
+            <div class="pinned-badge"><i class="fa-solid fa-thumbtack"></i> Destaque Dev</div>
+
+            <div class="project-header">
+              <h3>Plataforma de criação de portfolios</h3>
+              <p>Sistema completo de Portfolios voltados a designs de interiores possibilitando a criação de sua propia pagina.
+              </p>
+              <div class="badges">
+                <span class="badge">React</span>
+                <span class="badge">Node.js</span>
+                <span class="badge">PostgreSQL</span>
+              </div>
+            </div>
+
+            <div class="tabs-container">
+              <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="tab-web-1-1">Interface (UI)</button>
+                <button class="tab-btn" data-tab="tab-web-1-2">Detalhamento</button>
+                <button class="tab-btn" data-tab="tab-web-1-3">Links</button>
+              </div>
+
+              <div class="tab-content active" id="tab-web-1-1">
+                <div class="media-frame">
+                  <img src="./Assets/port5.jpg"
+                    alt="Interface Web">
+                </div>
+              </div>
+
+              <div class="tab-content" id="tab-web-1-2">
+                <div class="carousel-container">
+                  <div class="carousel-track">
+                    <div class="carousel-slide"><img
+                        src="./Assets/Porrt4.jpg" alt="Detalhe Web">
+                    </div>
+                  </div>
+                  <button class="carousel-nav prev"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button class="carousel-nav next"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="carousel-indicators"></div>
+                </div>
+              </div>
+
+              <div class="tab-content" id="tab-web-1-3">
+                <div class="project-links">
+                  <a href="https://matheuspiresdev.github.io/DesignAtividadeFrontEndFinal/" target="_blank" class="btn btn-primary"><i
+                      class="fa-solid fa-arrow-up-right-from-square"></i> Acessar Site</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="pagination-container" id="paginationControls"></div>
+      </div>
+    </section>
+
+    <!-- SOBRE MIM & EXPERIÊNCIA -->
+    <section id="sobre" class="section section-alt">
+      <div class="container grid-2">
+        <div>
+          <h2 class="section-title text-left">Perfil Profissional</h2>
+          <p class="about-text">
+            Profissional atuante na área de <strong>Análise de Dados, Business Intelligence e Engenharia de
+              Software</strong>. Experiência no desenvolvimento de painéis executivos e gerenciais (Power BI/DAX),
+            construção de consultas e modelagem de bancos de dados relacionais (SQL), além de automação de rotinas
+            operacionais em Excel.
+          </p>
+          <br>
+          <p class="about-text">
+            Possuo domínio conceitual do ciclo completo de desenvolvimento de software, unindo visão analítica de dados
+            ao alinhamento com regras de negócio dos setores comercial, financeiro e operacional.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="section-title text-left">Experiência Profissional</h2>
+          <div class="timeline">
+
+            <!-- FORTECARE - AUXILIAR DE TI -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="period">Out/2025 – Atual</span>
+                <h3>Auxiliar de TI / Analista de Dados & BI</h3>
+                <h4>Fortecare</h4>
+                <p>
+                  • <strong>Business Intelligence (Power BI):</strong> Desenvolvimento, modelagem e manutenção de
+                  dashboards interativos com métricas em DAX, análise geográfica e acompanhamento
+                  comercial/financeiro.<br>
+                  • <strong>Engenharia & Banco de Dados (SQL):</strong> Modelagem relacional e construção de consultas
+                  SQL otimizadas para extração e higienização de dados.<br>
+                  • <strong>Automação de Processos:</strong> Otimização de planilhas complexas em Excel para controle
+                  operacional e suporte ao setor financeiro.<br>
+                  • <strong>Suporte Técnico:</strong> Atendimento a usuários e manutenção da infraestrutura de sistemas.
+                </p>
+              </div>
+            </div>
+
+            <!-- FORTECARE - APRENDIZ -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="period">Experiência Anterior</span>
+                <h3>Aprendiz Administrativo / Análise de Dados</h3>
+                <h4>Fortecare</h4>
+                <p>
+                  • Tratamento e análise de dados em planilhas operacionais e financeiras em Excel para apoio às tomadas
+                  de decisão da gestão.<br>
+                  • Atendimento a clientes internos e otimização de fluxos administrativos.
+                </p>
+              </div>
+            </div>
+
+            <!-- COLORTEC -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="period">Experiência Anterior</span>
+                <h3>Gerenciador de Marketplace</h3>
+                <h4>Colortec</h4>
+                <p>
+                  • Gerenciamento e atualização de catálogo de produtos em plataforma de e-commerce.<br>
+                  • Acompanhamento do fluxo de vendas, emissão/impressão de pedidos e suporte ao cliente.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMAÇÃO ACADÊMICA COM PROGRESSO DINÂMICO -->
+    <section id="formacao" class="section">
+      <div class="container">
+        <h2 class="section-title">Formação Acadêmica & Cursos</h2>
+        <div class="education-grid">
+
+          <!-- UNISENAI (COM BARRA DE PROGRESSO AUTOMÁTICA) -->
+          <div class="card ed-card ongoing-course" data-start="2025-02" data-end="2029-01">
+            <div class="ed-header">
+              <h3>Bacharelado em Engenharia de Software</h3>
+              <span class="ed-status">UniSenai • Fev/2025 – Jan/2029 (<span class="calc-percent">0%</span>
+                Concluído)</span>
+            </div>
+            <p class="ed-scope">
+              Aprofundamento no ciclo completo de desenvolvimento de software: Arquitetura de Sistemas, UI/UX, Frontend,
+              Backend e Testes de Software. Domínio conceitual em Estruturas de Dados Lineares e Não Lineares, Bancos de
+              Dados Relacionais e Não Relacionais (NoSQL), além de disciplinas em Cibersegurança, IoT e Inteligência
+              Artificial.
+            </p>
+          </div>
+
+          <!-- SENAI CELSO CHARURI -->
+          <div class="card ed-card">
+            <div class="ed-header">
+              <h3>Técnico em Desenvolvimento de Sistemas</h3>
+              <span class="ed-status">Senai Celso Charuri</span>
+            </div>
+          </div>
+
+          <!-- KNN IDIOMAS -->
+          <div class="card ed-card">
+            <div class="ed-header">
+              <h3>Curso de Inglês</h3>
+              <span class="ed-status">KNN Idiomas</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETÊNCIAS TÉCNICAS -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Competências Técnicas & Pessoais</h2>
+        <div class="skills-grid">
+
+          <!-- DADOS & BI -->
+          <div class="card skill-card">
+            <h3><i class="fa-solid fa-chart-pie"></i> Análise de Dados & BI</h3>
+            <ul>
+              <li>Power BI (DAX, Power Query, ETL)</li>
+              <li>Design de Dashboards</li>
+              <li>Excel Avançado</li>
+              <li>Visualização de Dados</li>
+            </ul>
+          </div>
+
+          <!-- BANCOS DE DADOS -->
+          <div class="card skill-card">
+            <h3><i class="fa-solid fa-database"></i> Bancos de Dados & SQL</h3>
+            <ul>
+              <li>MySQL & PostgreSQL</li>
+              <li>MongoDB (NoSQL)</li>
+              <li>Consultas SQL Avançadas</li>
+              <li>Modelagem Relacional (Star Schema)</li>
+            </ul>
+          </div>
+
+          <!-- LINGUAGENS & WEB -->
+          <div class="card skill-card">
+            <h3><i class="fa-solid fa-code"></i> Linguagens & Web</h3>
+            <ul>
+              <li>Python, JavaScript, TypeScript</li>
+              <li>HTML5, CSS3, React, Node.js</li>
+              <li>C++</li>
+              <li>Git & GitHub</li>
+            </ul>
+          </div>
+
+          <!-- COMPETÊNCIAS PESSOAIS -->
+          <div class="card skill-card">
+            <h3><i class="fa-solid fa-user-check"></i> Competências Pessoais</h3>
+            <ul>
+              <li>Resolução de Problemas</li>
+              <li>Visão de Negócio</li>
+              <li>Trabalho em Equipe</li>
+              <li>Comunicação Assertiva & Adaptabilidade</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contato" class="footer">
+    <div class="container footer-content">
+      <div>
+        <h3>Entre em Contato</h3>
+        <p><i class="fa-solid fa-envelope"></i> Email: <a
+            href="mailto:matheusgustavodasilvapires@gmail.com">matheusgustavodasilvapires@gmail.com</a></p>
+        <p><i class="fa-brands fa-whatsapp"></i> Telefone: (41) 98831-4797</p>
+        <p><i class="fa-solid fa-location-dot"></i> Colombo - PR</p>
+      </div>
+      <div class="footer-actions">
+        <button id="scrollTop" class="btn btn-secondary btn-sm">
+          <i class="fa-solid fa-arrow-up"></i> Voltar ao topo
+        </button>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; Matheus Gustavo da Silva Pires. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
