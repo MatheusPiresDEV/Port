@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const typewriterElement = document.getElementById('typewriter');
   const phrases = [
-    "Analista de BI & Dados | Power BI, SQL & DAX | Estudante de Engenharia de Software",
-    "BI & Data Analyst | Power BI, SQL & DAX | Software Engineering Student"
+    "Analista de BI & Dados | Power BI, SQL & DAX | Estudante de Ciência de Dados",
+    "BI & Data Analyst | Power BI, SQL & DAX | Data Science student"
   ];
 
   let phraseIndex = 0;
