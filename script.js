@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const ageElement = document.getElementById('userAge');
   if (ageElement) {
-    const birthDate = new Date(2006, 10, 12); // Mês no JS é base zero (10 = Novembro)
+    const birthDate = new Date(2006, 10, 12); // Novembro é mês 10 (base zero)
     const today = new Date();
     
     let age = today.getFullYear() - birthDate.getFullYear();
@@ -19,13 +19,71 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 2. CÁLCULO DINÂMICO DO PROGRESSO DE CURSO
+  // 2. CÁLCULO DINÂMICO DA DURAÇÃO DAS EXPERIÊNCIAS
+  // ==========================================
+  const periodos = document.querySelectorAll('.timeline-content .period[data-start]');
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  periodos.forEach((el) => {
+    const [anoIni, mesIni, diaIni] = el.getAttribute('data-start').split('-').map(Number);
+    const dataInicio = new Date(anoIni, mesIni - 1, diaIni);
+
+    let dataFim;
+    const endAttr = el.getAttribute('data-end');
+    if (endAttr) {
+      const [anoFim, mesFim, diaFim] = endAttr.split('-').map(Number);
+      dataFim = new Date(anoFim, mesFim - 1, diaFim);
+    } else {
+      dataFim = hoje;
+    }
+
+    if (dataFim < dataInicio) return;
+
+    let anos = dataFim.getFullYear() - dataInicio.getFullYear();
+    let meses = dataFim.getMonth() - dataInicio.getMonth();
+    let dias = dataFim.getDate() - dataInicio.getDate();
+
+    if (dias < 0) {
+      meses--;
+      const ultimoDiaMesAnterior = new Date(dataFim.getFullYear(), dataFim.getMonth(), 0).getDate();
+      dias += ultimoDiaMesAnterior;
+    }
+
+    if (meses < 0) {
+      anos--;
+      meses += 12;
+    }
+
+    const partes = [];
+    if (anos > 0) partes.push(`${anos} ${anos === 1 ? 'ano' : 'anos'}`);
+    if (meses > 0) partes.push(`${meses} ${meses === 1 ? 'mês' : 'meses'}`);
+    if (dias > 0 || partes.length === 0) partes.push(`${dias} ${dias === 1 ? 'dia' : 'dias'}`);
+
+    // Injeta o tempo calculado mantendo o texto original
+    const textoOriginal = el.textContent.split('•')[0].trim();
+    el.textContent = `${textoOriginal} • ${partes.join(', ')}`;
+
+    // Se for o cargo atual (sem data-end), adiciona um selo visual dinâmico "Ativo"
+    if (!endAttr) {
+      const parentContent = el.closest('.timeline-content');
+      if (parentContent && !parentContent.querySelector('.live-badge')) {
+        const liveBadge = document.createElement('span');
+        liveBadge.className = 'live-badge';
+        liveBadge.innerHTML = '<span class="pulse-dot"></span> Experiência Atual';
+        parentContent.querySelector('h3').after(liveBadge);
+      }
+    }
+  });
+
+  // ==========================================
+  // 3. CÁLCULO DINÂMICO DO PROGRESSO DE CURSO
   // ==========================================
   const ongoingCourses = document.querySelectorAll('.ongoing-course');
 
   ongoingCourses.forEach(course => {
-    const startAttr = course.getAttribute('data-start'); // Formato: "AAAA-MM"
-    const endAttr = course.getAttribute('data-end');     // Formato: "AAAA-MM"
+    const startAttr = course.getAttribute('data-start');
+    const endAttr = course.getAttribute('data-end');
 
     if (startAttr && endAttr) {
       const startDate = new Date(`${startAttr}-01T00:00:00`);
@@ -37,17 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let percentage = Math.floor((elapsedTime / totalTime) * 100);
 
-      // Trava os limites em 0% e 100%
       if (percentage < 0) percentage = 0;
       if (percentage > 100) percentage = 100;
 
-      // Atualiza o texto da porcentagem no cabeçalho
       const percentLabel = course.querySelector('.calc-percent');
       if (percentLabel) {
         percentLabel.textContent = `${percentage}%`;
       }
 
-      // Cria a estrutura visual da Barra de Progresso em HTML
       const progressContainer = document.createElement('div');
       progressContainer.className = 'progress-container';
       progressContainer.innerHTML = `
@@ -62,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       course.appendChild(progressContainer);
 
-      // Anima o preenchimento da barra
       setTimeout(() => {
         const fillBar = progressContainer.querySelector('.progress-bar-fill');
         if (fillBar) {
@@ -73,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 3. MENU HAMBÚRGUER MOBILE
+  // 4. MENU HAMBÚRGUER MOBILE
   // ==========================================
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
@@ -94,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. EFEITO TYPEWRITER
+  // 5. EFEITO TYPEWRITER
   // ==========================================
   const typewriterElement = document.getElementById('typewriter');
   const phrases = [
@@ -134,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typewriterElement) typeEffect();
 
   // ==========================================
-  // 5. NAVEGAÇÃO POR TABS DOS PROJETOS
+  // 6. NAVEGAÇÃO POR TABS DOS PROJETOS
   // ==========================================
   const tabButtons = document.querySelectorAll('.tab-btn');
   tabButtons.forEach(button => {
@@ -152,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 6. CARROSSEL DE IMAGENS
+  // 7. CARROSSEL DE IMAGENS
   // ==========================================
   const carousels = document.querySelectorAll('.carousel-container');
 
@@ -209,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 7. PROJETOS FIXOS & PAGINAÇÃO
+  // 8. PROJETOS FIXOS & PAGINAÇÃO
   // ==========================================
   const ITEMS_PER_PAGE = 3;
   let currentPage = 1;
@@ -286,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 8. BOTÃO VOLTAR AO TOPO
+  // 9. BOTÃO VOLTAR AO TOPO
   // ==========================================
   const scrollTopBtn = document.getElementById('scrollTop');
   if (scrollTopBtn) {
@@ -294,5 +348,23 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // ==========================================
+  // 10. ANIMAÇÃO SUAVE AO ROLAR (SCROLL REVEAL)
+  // ==========================================
+  const observerOptions = { threshold: 0.1 };
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.card, .timeline-item').forEach(el => {
+    el.classList.add('fade-in-hidden');
+    observer.observe(el);
+  });
 
 });
